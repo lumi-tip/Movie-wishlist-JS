@@ -50,7 +50,6 @@ async function render(arr) {
 
         })
     }
-
 }
 
 searchBtn.addEventListener("click", async () => {
@@ -77,12 +76,10 @@ function addToLocalStorage(movieID){
         moviesInWishlist.push(movieID)
         localStorage.setItem('wishListMovies', JSON.stringify(moviesInWishlist))
         console.log(localStorage.getItem('wishListMovies'))
-        console.log("added first item to localStorage")
     }else {
         let data = JSON.parse(recoveredData)
         data.push(movieID)
         localStorage.setItem('wishListMovies', JSON.stringify(data))
         console.log(localStorage.getItem('wishListMovies'))
-        console.log('added to localStorage')
     }
 }
