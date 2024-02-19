@@ -1,7 +1,9 @@
 const contentDisplay = document.getElementById('content-display')
 const searchInput = document.getElementById('movie-input')
+const body = document.getElementById('body')
+const spinner = document.getElementById('spinner')
 let searchBtn = document.getElementById("search-btn")
-let addedMovies = []
+let moviesInWishlist = []
 
 async function render(arr) {
     let html = ""
@@ -33,19 +35,19 @@ async function render(arr) {
             `
         }else continue
     }
-    document.getElementById("spinner").style.display="none";
-    document.getElementById("body").style.display = "block"
+    spinner.style.display="none";
+    body.style.display = "block"
     contentDisplay.style.display = "block"
     contentDisplay.innerHTML = html
     
-
     const addBtns = document.querySelectorAll('.addTo-el')
     const addBtnsArr = [...addBtns]
 
     for (let i = 0; i < addBtnsArr.length; i++) {
         addBtnsArr[i].addEventListener('click', () => {
             let movieID = addBtnsArr[i].parentElement.parentElement.parentElement.id
-            console.log(movieID)
+            addToLocalStorage(movieID)
+
         })
     }
 
@@ -56,16 +58,31 @@ searchBtn.addEventListener("click", async () => {
     const data = await res.json()
 
     if (data.Error) {
-        console.log(data)
-        document.getElementById("body").style.display = "inherit"
+        body.style.display = "inherit"
         contentDisplay.innerHTML = `<h3>Unable to find what you're looking for. Please try another search</h3>`
     }
     else if (data.Search) {
         let moviesArr = data.Search
         moviesArr = moviesArr.slice(0, 5)
         contentDisplay.style.display = "none"
-        document.getElementById("body").style.display = "inherit"
-        document.getElementById("spinner").style.display="block";
+        body.style.display = "inherit"
+        spinner.style.display="block";
         render(moviesArr)
     }
 })
+
+function addToLocalStorage(movieID){
+    let recoveredData = localStorage.getItem('wishListMovies')
+    if(recoveredData == null){
+        moviesInWishlist.push(movieID)
+        localStorage.setItem('wishListMovies', JSON.stringify(moviesInWishlist))
+        console.log(localStorage.getItem('wishListMovies'))
+        console.log("added first item to localStorage")
+    }else {
+        let data = JSON.parse(recoveredData)
+        data.push(movieID)
+        localStorage.setItem('wishListMovies', JSON.stringify(data))
+        console.log(localStorage.getItem('wishListMovies'))
+        console.log('added to localStorage')
+    }
+}
