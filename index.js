@@ -47,7 +47,6 @@ async function render(arr) {
         addBtnsArr[i].addEventListener('click', () => {
             let movieID = addBtnsArr[i].parentElement.parentElement.parentElement.id
             addToLocalStorage(movieID)
-
         })
     }
 }
@@ -75,11 +74,11 @@ function addToLocalStorage(movieID){
     if(recoveredData == null){
         moviesInWishlist.push(movieID)
         localStorage.setItem('wishListMovies', JSON.stringify(moviesInWishlist))
-        console.log(localStorage.getItem('wishListMovies'))
-    }else {
+    }else if(JSON.parse(recoveredData).includes(movieID)){
+        alert("This movie is already in your wishlist")
+    }else{
         let data = JSON.parse(recoveredData)
         data.push(movieID)
         localStorage.setItem('wishListMovies', JSON.stringify(data))
-        console.log(localStorage.getItem('wishListMovies'))
     }
 }
