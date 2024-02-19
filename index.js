@@ -9,6 +9,7 @@ async function render(arr) {
         const movieRes = await fetch(`http://www.omdbapi.com/?t=${movie.Title}&apikey=848ba33d`)
         const movieData = await movieRes.json()
         console.log(movieData)
+
         if(movieData.Ratings.length > 0){
             html += `
             <div class="movie" id="${movieData.imdbID}">
@@ -32,8 +33,11 @@ async function render(arr) {
             `
         }else continue
     }
+    document.getElementById("spinner").style.display="none";
     document.getElementById("body").style.display = "block"
+    contentDisplay.style.display = "block"
     contentDisplay.innerHTML = html
+    
 
     const addBtns = document.querySelectorAll('.addTo-el')
     const addBtnsArr = [...addBtns]
@@ -59,6 +63,9 @@ searchBtn.addEventListener("click", async () => {
     else if (data.Search) {
         let moviesArr = data.Search
         moviesArr = moviesArr.slice(0, 5)
+        contentDisplay.style.display = "none"
+        document.getElementById("body").style.display = "inherit"
+        document.getElementById("spinner").style.display="block";
         render(moviesArr)
     }
 })
