@@ -1,6 +1,6 @@
 const moviesIDInWishlist = JSON.parse(localStorage.getItem('wishListMovies'))
 const contentDisplay = document.getElementById("content-display")
-console.log(moviesIDInWishlist)
+
 async function render(arr) {
     let html = ""
     for (let movie of arr) {

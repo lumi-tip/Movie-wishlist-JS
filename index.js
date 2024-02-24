@@ -5,9 +5,9 @@ const spinner = document.getElementById('spinner')
 let searchBtn = document.getElementById("search-btn")
 let moviesInWishlist = []
 
-async function render(arr) {
+async function render(moviesSavedArr) {
     let html = ""
-    for (movie of arr) {
+    for (movie of moviesSavedArr) {
         const movieRes = await fetch(`http://www.omdbapi.com/?t=${movie.Title}&apikey=848ba33d`)
         const movieData = await movieRes.json()
         console.log(movieData)
@@ -47,6 +47,7 @@ async function render(arr) {
         addBtnsArr[i].addEventListener('click', () => {
             let movieID = addBtnsArr[i].parentElement.parentElement.parentElement.id
             addToLocalStorage(movieID)
+            alert("added to wishlist")
         })
     }
 }
