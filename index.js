@@ -2,7 +2,7 @@ const contentDisplay = document.getElementById('content-display')
 const searchInput = document.getElementById('movie-input')
 const body = document.getElementById('body')
 const spinner = document.getElementById('spinner')
-let searchBtn = document.getElementById("search-btn")
+const searchBtn = document.getElementById("search-btn")
 let moviesInWishlist = []
 
 async function render(moviesSavedArr) {
@@ -27,7 +27,7 @@ async function render(moviesSavedArr) {
                     <div class="genre-wrapper">
                         <span class="movie-data">${movieData.Runtime}</span>
                         <span>${movieData.Genre}</span>
-                        <button type="button" class="addTo-el"><i class="fa-solid fa-plus"></i></button>
+                        <button type="button" class="addTo-el"><i class="fa-solid fa-plus btn-add-del"></i></button>
                     </div>
                     <span">${movieData.Plot}</span>
                 </div>
@@ -47,7 +47,6 @@ async function render(moviesSavedArr) {
         addBtnsArr[i].addEventListener('click', () => {
             let movieID = addBtnsArr[i].parentElement.parentElement.parentElement.id
             addToLocalStorage(movieID)
-            alert("added to wishlist")
         })
     }
 }
@@ -75,9 +74,11 @@ function addToLocalStorage(movieID){
     if(recoveredData == null){
         moviesInWishlist.push(movieID)
         localStorage.setItem('wishListMovies', JSON.stringify(moviesInWishlist))
+        alert("Added to your wishlist")
     }else if(JSON.parse(recoveredData).includes(movieID)){
         alert("This movie is already in your wishlist")
     }else{
+        alert("Added to your wishlist")
         let data = JSON.parse(recoveredData)
         data.push(movieID)
         localStorage.setItem('wishListMovies', JSON.stringify(data))
