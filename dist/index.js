@@ -14,22 +14,24 @@ async function render(moviesSavedArr) {
 
         if(movieData.Ratings.length > 0){
             html += `
-            <div class="movie" id="${movieData.imdbID}">
-                <img src="${movieData.Poster}" alt="Poster of ${movieData.Title}"/>
-                <div class="description-wrapper">
-                    <div class="title-wrapper">
-                        <h3>${movieData.Title}</h3>
+            <div class="movie flex flex-wrap justify-center gap-2.5 mb-2.5" id="${movieData.imdbID}">
+                <img class="poster rounded-xl" src="${movieData.Poster}" alt="Poster of ${movieData.Title}"/>
+                <div class="px-2.5 py-1.5 flex flex-col justify-center items-center text-white gap-5">
+                    <div class="flex justify-center gap-2">
+                        <h3 class="text-white p-0">${movieData.Title}</h3>
                         <div>
                             <i class="fa-solid fa-star" style="color:yellow"></i>
-                            <span>${movieData.Ratings[0].Value}</span>
+                            <span class="text-white">${movieData.Ratings[0].Value}</span>
                         </div>
                     </div>
-                    <div class="genre-wrapper">
-                        <span class="movie-data">${movieData.Runtime}</span>
-                        <span>${movieData.Genre}</span>
-                        <button type="button" class="addTo-el"><i class="fa-solid fa-plus btn-add-del"></i></button>
+                    <div class="flex justify-evenly items-center gap-2">
+                        <span class="movie-data text-white">${movieData.Runtime}</span>
+                        <span class="text-white">${movieData.Genre}</span>
+                        <button class="whishlistBtn rounded-full bg-white border-0 flex" type="button">
+                            <i class="fa-solid fa-plus text-black grow mt-0.5"></i>
+                        </button>
                     </div>
-                    <span">${movieData.Plot}</span>
+                    <span class="text-white pt-2.5">${movieData.Plot}</span>
                 </div>
             </div>
             `
@@ -40,7 +42,7 @@ async function render(moviesSavedArr) {
     contentDisplay.style.display = "block"
     contentDisplay.innerHTML = html
     
-    const addBtns = document.querySelectorAll('.addTo-el')
+    const addBtns = document.querySelectorAll('.whishlistBtn')
     const addBtnsArr = [...addBtns]
 
     for (let i = 0; i < addBtnsArr.length; i++) {
@@ -56,14 +58,14 @@ searchBtn.addEventListener("click", async () => {
     const data = await res.json()
 
     if (data.Error) {
-        body.style.display = "inherit"
-        contentDisplay.innerHTML = `<h3>Unable to find what you're looking for. Please try another search</h3>`
+        body.style.display = "flex"
+        contentDisplay.innerHTML = `<h3 class="text-xl font-bold px-4">Unable to find what you're looking for. Please try another search</h3>`
     }
     else if (data.Search) {
         let moviesArr = data.Search
         moviesArr = moviesArr.slice(0, 5)
         contentDisplay.style.display = "none"
-        body.style.display = "inherit"
+        body.style.display = "flex"
         spinner.style.display="block";
         render(moviesArr)
     }

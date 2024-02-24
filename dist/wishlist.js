@@ -8,22 +8,24 @@ async function render(arr) {
             const movieRes = await fetch(`http://www.omdbapi.com/?i=${movie}&apikey=848ba33d`)
             const movieData = await movieRes.json()
             html += `
-            <div class="movie" id="${movieData.imdbID}">
-                <img src="${movieData.Poster}" alt="Poster of ${movieData.Title}"/>
-                <div class="description-wrapper">
-                    <div class="title-wrapper">
-                        <h3>${movieData.Title}</h3>
+            <div class="movie flex flex-wrap justify-center gap-2.5 mb-2.5" id="${movieData.imdbID}">
+                <img class="poster rounded-xl" src="${movieData.Poster}" alt="Poster of ${movieData.Title}"/>
+                <div class="px-2.5 py-1.5 flex flex-col justify-center items-center text-white gap-5">
+                    <div class="flex justify-center gap-2">
+                        <h3 class="p-0 text-white">${movieData.Title}</h3>
                         <div>
                             <i class="fa-solid fa-star" style="color:yellow"></i>
-                            <span>${movieData.Ratings[0].Value}</span>
+                            <span class="text-white">${movieData.Ratings[0].Value}</span>
                         </div>
                     </div>
-                    <div class="genre-wrapper">
-                        <span class="movie-data">${movieData.Runtime}</span>
-                        <span>${movieData.Genre}</span>
-                        <button type="button" class="delete-from"><i class="fa-solid fa-minus btn-add-del"></i></button>
+                    <div class="flex justify-evenly items-center gap-2">
+                        <span class="movie-data text-white">${movieData.Runtime}</span>
+                        <span class="text-white">${movieData.Genre}</span>
+                        <button type="button" class="whishlistBtn rounded-full bg-white border-0 flex">
+                            <i class=" text-black fa-solid fa-minus grow mt-0.5"></i>
+                        </button>
                     </div>
-                    <span">${movieData.Plot}</span>
+                    <p class="text-white text-center pt-2.5">${movieData.Plot}</p>
                 </div>
             </div>
             `
@@ -33,7 +35,7 @@ async function render(arr) {
         contentDisplay.style.display = "block"
         contentDisplay.innerHTML = html
     
-        const deleteBtns = document.querySelectorAll(".delete-from")
+        const deleteBtns = document.querySelectorAll(".whishlistBtn")
         const deleteBtnsArr = [...deleteBtns]
     
         for (let i = 0; i < deleteBtnsArr.length; i++) {
@@ -43,10 +45,13 @@ async function render(arr) {
             })
         }
     }else{
-        body.style.display = "inherit"
+        body.style.display = "flex"
         contentDisplay.innerHTML = `
-            <h2>Your watchlist is looking a little empty</h2>
-            <a href="index.html" id="backToSearch-btn"><span><i class="fa-solid fa-plus"></i></span> Let's add some movies!</a>
+            <h2 class="text-3xl font-bold px-4">Your watchlist is looking a little empty</h2>
+            <a class="flex justify-center items-center mt-5 gap-2.5 text-white" href="index.html" id="backToSearch-btn">
+            <span class="whishlistBtn rounded-full bg-white border-0 flex><i class="fa-solid fa-plus grow self-center text-black"></i></span> 
+                Let's add some movies!
+            </a>
         `
     }
 }
