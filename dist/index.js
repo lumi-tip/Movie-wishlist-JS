@@ -69,6 +69,7 @@ searchBtn.addEventListener("click", async () => {
         spinner.style.display="block";
         render(moviesArr)
     }
+    searchInput.value = ""
 })
 
 function addToLocalStorage(movieID){

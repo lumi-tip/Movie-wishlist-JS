@@ -77,20 +77,21 @@ nav a{
 
 .lds-dual-ring {
     display: inline-block;
+    justify-items: center;
     width: 80px;
     height: 80px;
 }
 
 .lds-dual-ring:after {
-content: " ";
-display: block;
-width: 64px;
-height: 64px;
-margin: 8px;
-border-radius: 50%;
-border: 6px solid rgb(202, 202, 202);
-border-color: rgb(201, 201, 201) transparent rgb(202, 202, 202) transparent;
-animation: lds-dual-ring 1.2s linear infinite;
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid rgb(202, 202, 202);
+    border-color: rgb(201, 201, 201) transparent rgb(202, 202, 202) transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
 }
 
 
@@ -129,6 +130,10 @@ animation: lds-dual-ring 1.2s linear infinite;
 
     .input-wrapper{
         width:50% !important;
+    }
+
+    #content-display{
+        padding: 0 100px
     }
 
     .movie{
