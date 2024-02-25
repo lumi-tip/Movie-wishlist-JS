@@ -27,4 +27,4 @@ You can always edit your Wishlist by removing and adding new movies and series.
 
 ### Project status
 
-:build: In development and continuous improvement.
+:shipit: In development and continuous improvement.
