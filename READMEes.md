@@ -7,6 +7,7 @@ Este es un proyecto personal hecho para practicar vanilla js.
 - [Tecnologias](#tecnologias)
 - [Caracteristicas Principales](#caracteristicas-principales)
 - [Ejecutar y Editar poryecto](#como-ejecutar-y-editar-el-proyecto)
+- [Estado del proyecto](#estado-del-proyecto)
 
 ## Tecnologias 
 
