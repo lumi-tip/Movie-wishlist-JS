@@ -5,12 +5,13 @@ async function render(arr) {
     if(arr.length > 0){
         let html = ""
         for (let movie of arr) {
-            const movieRes = await fetch(`http://www.omdbapi.com/?i=${movie}&apikey=848ba33d`)
+            const movieRes = await fetch(`https://www.omdbapi.com/?i=${movie}&apikey=848ba33d`)
             const movieData = await movieRes.json()
+            console.log(movieData.imdbID)
             html += `
             <div class="movie flex flex-wrap justify-center mb-2.5" id="${movieData.imdbID}">
                 <img class="poster rounded-xl" src="${movieData.Poster}" alt="Poster of ${movieData.Title}"/>
-                <div class=" movie-info-wrapper px-2.5 py-2.5 flex flex-col justify-center items-center text-white">
+                <div class="movie-info-wrapper px-2.5 py-2.5 flex flex-col justify-center items-center text-white">
                     <div class="flex justify-center gap-2 px-4 pb-2.5">
                         <h3 class="movie-title p-0 text-white text-xl text-start">${movieData.Title}</h3>
                         <div class="self-center">

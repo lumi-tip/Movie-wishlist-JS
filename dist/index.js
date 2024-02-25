@@ -8,9 +8,9 @@ let moviesInWishlist = []
 async function render(moviesSavedArr) {
     let html = ""
     for (movie of moviesSavedArr) {
-        const movieRes = await fetch(`http://www.omdbapi.com/?t=${movie.Title}&apikey=848ba33d`)
+        const movieRes = await fetch(`https://www.omdbapi.com/?t=${movie.Title}&apikey=848ba33d`)
         const movieData = await movieRes.json()
-        console.log(movieData)
+        console.log("https://www.omdbapi.com/?i=tt26537229&apikey=848ba33d")
 
         if(movieData.Ratings.length > 0){
             html += `
