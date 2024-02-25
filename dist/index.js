@@ -31,7 +31,7 @@ async function render(moviesSavedArr) {
                             <i class="fa-solid fa-plus text-black grow mt-0.5"></i>
                         </button>
                     </div>
-                    <span class="text-white pt-2.5 px-4" style="text-align:start">${movieData.Plot}</span>
+                    <span class="text-white pt-2.5 px-4" style="text-align:justify">${movieData.Plot}</span>
                 </div>
             </div>
             `

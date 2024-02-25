@@ -26,7 +26,7 @@ async function render(arr) {
                             <i class="text-black fa-solid fa-minus grow mt-0.5"></i>
                         </button>
                     </div>
-                    <p class="text-white text-start pt-2.5 px-4">${movieData.Plot}</p>
+                    <p class="text-white text-justify pt-2.5 px-4">${movieData.Plot}</p>
                 </div>
             </div>
             `
