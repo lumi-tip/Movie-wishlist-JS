@@ -14,24 +14,24 @@ async function render(moviesSavedArr) {
 
         if(movieData.Ratings.length > 0){
             html += `
-            <div class="movie flex flex-wrap justify-center gap-2.5 mb-2.5" id="${movieData.imdbID}">
+            <div class="movie flex flex-wrap justify-center mb-2.5" id="${movieData.imdbID}">
                 <img class="poster rounded-xl" src="${movieData.Poster}" alt="Poster of ${movieData.Title}"/>
-                <div class="px-2.5 py-1.5 flex flex-col justify-center items-center text-white gap-5">
-                    <div class="flex justify-center gap-2">
-                        <h3 class="text-white p-0">${movieData.Title}</h3>
-                        <div>
-                            <i class="fa-solid fa-star" style="color:yellow"></i>
-                            <span class="text-white">${movieData.Ratings[0].Value}</span>
+                <div class="movie-info-wrapper px-2.5 py-2.5 flex flex-col justify-center items-center text-white">
+                    <div class="flex justify-center gap-2 px-4 pb-2.5">
+                        <h3 class="movie-title p-0 text-white text-xl text-start">${movieData.Title}</h3>
+                        <div class="self-center">
+                            <i class="fa-solid fa-star text-sm" style="color:yellow"></i>
+                            <span class="text-white text-sm">${movieData.Ratings[0].Value}</span>
                         </div>
                     </div>
-                    <div class="flex justify-evenly items-center gap-2">
+                    <div class="duration-wrapper flex justify-evenly items-center gap-2">
                         <span class="movie-data text-white">${movieData.Runtime}</span>
                         <span class="text-white">${movieData.Genre}</span>
                         <button class="whishlistBtn rounded-full bg-white border-0 flex" type="button">
                             <i class="fa-solid fa-plus text-black grow mt-0.5"></i>
                         </button>
                     </div>
-                    <span class="text-white pt-2.5">${movieData.Plot}</span>
+                    <span class="text-white pt-2.5 px-4" style="text-align:start">${movieData.Plot}</span>
                 </div>
             </div>
             `

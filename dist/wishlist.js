@@ -8,24 +8,24 @@ async function render(arr) {
             const movieRes = await fetch(`http://www.omdbapi.com/?i=${movie}&apikey=848ba33d`)
             const movieData = await movieRes.json()
             html += `
-            <div class="movie flex flex-wrap justify-center gap-2.5 mb-2.5" id="${movieData.imdbID}">
+            <div class="movie flex flex-wrap justify-center mb-2.5" id="${movieData.imdbID}">
                 <img class="poster rounded-xl" src="${movieData.Poster}" alt="Poster of ${movieData.Title}"/>
-                <div class="px-2.5 py-1.5 flex flex-col justify-center items-center text-white gap-5">
-                    <div class="flex justify-center gap-2">
-                        <h3 class="p-0 text-white">${movieData.Title}</h3>
-                        <div>
-                            <i class="fa-solid fa-star" style="color:yellow"></i>
-                            <span class="text-white">${movieData.Ratings[0].Value}</span>
+                <div class=" movie-info-wrapper px-2.5 py-2.5 flex flex-col justify-center items-center text-white">
+                    <div class="flex justify-center gap-2 px-4 pb-2.5">
+                        <h3 class="movie-title p-0 text-white text-xl text-start">${movieData.Title}</h3>
+                        <div class="self-center">
+                            <i class="fa-solid fa-star text-sm" style="color:yellow"></i>
+                            <span class="text-white text-sm">${movieData.Ratings[0].Value}</span>
                         </div>
                     </div>
-                    <div class="flex justify-evenly items-center gap-2">
+                    <div class="duration-wrapper flex justify-evenly items-center gap-2">
                         <span class="movie-data text-white">${movieData.Runtime}</span>
                         <span class="text-white">${movieData.Genre}</span>
                         <button type="button" class="whishlistBtn rounded-full bg-white border-0 flex">
-                            <i class=" text-black fa-solid fa-minus grow mt-0.5"></i>
+                            <i class="text-black fa-solid fa-minus grow mt-0.5"></i>
                         </button>
                     </div>
-                    <p class="text-white text-center pt-2.5">${movieData.Plot}</p>
+                    <p class="text-white text-start pt-2.5 px-4">${movieData.Plot}</p>
                 </div>
             </div>
             `
@@ -49,7 +49,9 @@ async function render(arr) {
         contentDisplay.innerHTML = `
             <h2 class="text-3xl font-bold px-4">Your watchlist is looking a little empty</h2>
             <a class="flex justify-center items-center mt-5 gap-2.5 text-white" href="index.html" id="backToSearch-btn">
-            <span class="whishlistBtn rounded-full bg-white border-0 flex><i class="fa-solid fa-plus grow self-center text-black"></i></span> 
+                <span class="whishlistBtn rounded-full bg-white border-0 flex text-black>
+                    <i class="text-black fa-solid fa-plus grow self-center"></i>
+                </span> 
                 Let's add some movies!
             </a>
         `
