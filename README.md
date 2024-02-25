@@ -17,7 +17,7 @@ This is a personal project made to practice vanilla js.
 
 ## Main Features
 
-The purpose of the movie wishlist is to search for movies or series that you want to see, obtain a short description of it and know what rating the critics have given it. If you like what you see, you can always hit the button. saved, which will cause it to be instantly added to the whishList.
+The purpose of the movie wishlist is to search for movies or series that you want to see. When searching for a movie you'll get a short description and a rating based on public opinion. If you like what you see, you can always hit the "save on my wishList" button, which will add the movie (or series) to your whishList.
 You can always edit your Wishlist by removing and adding new movies and series.
 
 ## How to run and edit the project
